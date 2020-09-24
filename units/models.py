@@ -24,6 +24,7 @@ UNIT_STATUS = (
 # Area Table
 class Area(models.Model):
 	title = models.CharField(max_length=60, verbose_name='Area', )
+	remarks = models.TextField(max_length=500, blank=True , null=True, verbose_name='Remarks') # Remarks
 	
 	def __str__(self):
 		return self.title
@@ -31,6 +32,7 @@ class Area(models.Model):
 # City Table
 class City(models.Model):
 	title = models.CharField(max_length=60, verbose_name='City', )
+	remarks = models.TextField(max_length=500, blank=True , null=True, verbose_name='Remarks') # Remarks
 
 	def __str__(self):
 		return self.title
@@ -38,6 +40,7 @@ class City(models.Model):
 # Country Table
 class Country(models.Model):
 	title = models.CharField(max_length=60, verbose_name='Country', )
+	remarks = models.TextField(max_length=500, blank=True , null=True, verbose_name='Remarks') # Remarks
 
 	def __str__(self):
 		return self.title
@@ -45,6 +48,8 @@ class Country(models.Model):
 # Furniture Table
 class Furniture(models.Model):
 	title = models.CharField(max_length=60, verbose_name='Furniture', )
+	furniture_image = models.ImageField(upload_to='images/') # Internal Images
+	remarks = models.TextField(max_length=500, blank=True , null=True, verbose_name='Remarks') # Remarks
 
 	def __str__(self):
 		return self.title
@@ -52,6 +57,8 @@ class Furniture(models.Model):
 # Rooms Table
 class Room(models.Model):
 	title = models.CharField(max_length=60, verbose_name='Room', )
+	room_image = models.ImageField(upload_to='images/') # Internal Images
+	remarks = models.TextField(max_length=500, blank=True , null=True, verbose_name='Remarks') # Remarks
 					
 	def __str__(self):
 		return self.title 
@@ -64,7 +71,7 @@ class Unit(models.Model):
 	price = models.DecimalField(max_digits=10,decimal_places=2) # How much Price
 	num_bedrooms = models.IntegerField( verbose_name='Number of Bed rooms') # Count of Closed Rooms
 	hole_space = models.IntegerField( verbose_name='Hole Space') # Count of Closed Rooms
-#	image = models.ImageField(upload_to='units_images/' , blank=True , null=True, verbose_name='Unit Main Image') # Internal Images
+	image = models.ImageField(upload_to='images/') # Internal Images
 	active = models.BooleanField(default=True) # Post Status
 	owner_email = models.EmailField(default='m.medhat@dropsgroup.com') # Email
 	type = models.CharField(choices=UNIT_TYPE , default='FLAT',max_length=20) # Unite Type
@@ -74,7 +81,7 @@ class Unit(models.Model):
 	area = models.ForeignKey(Area, on_delete=models.CASCADE) # Area
 	furniture = models.ManyToManyField(Furniture) # Furniture Type
 	Room = models.ManyToManyField(Room) # Room Type
-	remarks = models.TextField(max_length=500, blank=True , null=True, verbose_name='Remarks') # Remarks
+	
 	created_at = models.DateTimeField(default=timezone.now) # Post Creation Date
 					
 	def __str__(self):

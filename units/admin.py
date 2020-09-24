@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Area, City, Country, Furniture, Room, Unit
 
 # Register your models here.
+from .models import Area, City, Country, Furniture, Room, Unit
 
 admin.site.register(Area)
 admin.site.register(City)
