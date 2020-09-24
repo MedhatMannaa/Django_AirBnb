@@ -5,10 +5,10 @@ from .models import Unit
 
 def all_units(request):
     ## Logic
-    all_units = Post.objects.all()
+    all_units = Unit.objects.all()
     return render(request,'unit/all_units.html' ,{'units':all_units})
 
 def single_unit(request,id):
     ## Logic
-    single_unit = Post.objects.get(id=id)
+    single_unit = Unit.objects.get(id=id)
     return render(request,'unit/single_unit.html' ,{'unit':single_unit})   
