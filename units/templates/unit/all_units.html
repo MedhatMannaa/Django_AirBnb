@@ -3,5 +3,5 @@
 <h2>This Page for All Units I Have</h2>
 
 {% for unit in units %}
-    <h3>{{unit}}</h3>
+<h3><a href="{% url 'unit:unit_detail' unit.id %}">{{unit}}</a></h3>
 {% endfor %}
