@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Unit
+from .forms import UnitForm
 
 # Create your views here.
 
@@ -15,4 +16,5 @@ def single_unit(request,id):
 
 def new_unit(request):
     ## Logic
-    return render(request,'unit/new.html',{})  
+    form = UnitForm()
+    return render(request,'unit/new.html',{'form':form})  
