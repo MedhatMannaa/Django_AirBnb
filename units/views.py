@@ -12,3 +12,7 @@ def single_unit(request,id):
     ## Logic
     single_unit = Unit.objects.get(id=id)
     return render(request,'unit/single_unit.html' ,{'unit':single_unit})   
+
+def new_unit(request):
+    ## Logic
+    return render(request,'unit/new.html',{})  
