@@ -16,5 +16,11 @@ def single_unit(request,id):
 
 def new_unit(request):
     ## Logic
-    form = UnitForm()
+    if request.method=='POST': # add new unit
+        form = UnitForm(request.POST , request.FILES)
+        if form.is_valid():
+            form.save()
+
+    else: # show unit
+        form = UnitForm()
     return render(request,'unit/new.html',{'form':form})  

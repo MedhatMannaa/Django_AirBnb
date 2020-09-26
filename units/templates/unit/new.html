@@ -3,4 +3,8 @@
 <hr>
 <h3>Add New Post</h3>
 <hr>
-{{form}}
+<form method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}  
+    <input type="submit" value="new ubit">
+</form>
