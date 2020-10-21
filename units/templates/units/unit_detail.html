@@ -1,0 +1,17 @@
+<h1><a href="{% url 'units:unit_list' %}"> WellCome To My AirBnb blog CBV</a></h1>
+<hr>
+<a href="{% url 'unit:new_unit' %}">Add New Unit</a>
+<hr>
+<a href="{% url 'unit:edit_unit' unit.id %}">Edit Unit Information</a>
+<hr>
+<h2>This Page for Single Unit View</h2>
+<hr>
+{{unit}}
+
+{{unit.description}}
+
+{{unit.price}}
+
+{{unit.created_at}}
+
+<img src="{{unit.image.url}}">

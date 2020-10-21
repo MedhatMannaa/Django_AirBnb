@@ -1,0 +1,9 @@
+<h1><a href="{% url 'units:unit_list' %}"> WellCome To My AirBnb blog CBV</a></h1>
+<hr>
+<a href="{% url 'unit:new_unit' %}">Add New Unit</a>
+<hr>
+<h2>This Page for All Units I Have</h2>
+<hr>
+{% for unit in object_list %}
+    <h3><a href="{{unit.get_absolute_url}}">{{unit}}</a></h3>
+{% endfor %}
