@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 
+
 # Create your models here.
 
 
@@ -65,7 +66,7 @@ class Room(models.Model):
 				
 # Main Unite Table
 class Unit(models.Model):
-
+	
 	title = models.CharField(max_length=60, verbose_name='Unit Title', unique=True ,) # Title
 	description = models.TextField(max_length=500, verbose_name='Unit Description') # Description
 	price = models.DecimalField(max_digits=10,decimal_places=2) # How much Price
@@ -81,8 +82,31 @@ class Unit(models.Model):
 	area = models.ForeignKey(Area, on_delete=models.CASCADE) # Area
 	furniture = models.ManyToManyField(Furniture) # Furniture Type
 	Room = models.ManyToManyField(Room) # Room Type
-	
 	created_at = models.DateTimeField(default=timezone.now) # Post Creation Date
-					
+
+	class Meta:
+		verbose_name = 'Unit'
+		verbose_name_plural = 'All Units'
+		ordering = ('-active' ,'price' ,'title' ,)
+
 	def __str__(self):
 		return self.title 
+	
+	def get_read_time(self):
+		pass
+	
+	def get_absolute_url(self):
+		return reverse('unit:cbv_detail', kwargs={'pk': self.id})
+
+# Comment Table
+class Comments(models.Model):
+	post = models.ForeignKey(Unit , on_delete=models.CASCADE)
+	text = models.TextField(max_length=200, blank=True , null=True)
+
+	class Meta:
+		verbose_name = 'Comment'
+		verbose_name_plural = 'All Comments'
+
+	def __str__(self):
+		return str(self.post) 
+	
